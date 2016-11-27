@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
 
-public class GeneralTreeOfInteger {
+public class GeneralTreeOfString {
 
     // Classe interna Node
     private class Node {
@@ -49,7 +49,7 @@ public class GeneralTreeOfInteger {
     private int count;
 
     // Metodos
-    public GeneralTreeOfInteger() {
+    public GeneralTreeOfString() {
         root = null;
         count = 0;
     }

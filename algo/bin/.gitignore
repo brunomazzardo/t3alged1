@@ -1,7 +1,2 @@
-/App.class
-/EmptyQueueException.class
-/EmptyTreeException.class
-/GeneralTreeOfInteger$Node.class
-/GeneralTreeOfInteger.class
-/Queue.class
-/leituraDosLivros.class
+/GeneralTreeOfString$Node.class
+/GeneralTreeOfString.class
