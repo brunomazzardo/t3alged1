@@ -22,7 +22,7 @@ public class leituraDosLivros {
 				Scanner sc = new Scanner(linha);
 				if (linha.substring(0, 1).equals("L") || linha.substring(0, 1).equals("C")
 						|| linha.substring(0, 1).equals("S")) {
-					livroArray.add(linha.substring(2, linha.length()));
+					livroArray.add(linha.substring(2, linha.length()));//
 				}
 			}
 
