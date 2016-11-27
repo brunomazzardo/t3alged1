@@ -7,16 +7,16 @@ public class GeneralTreeOfInteger {
     private class Node {
 
         public Node father;
-        public Integer element;
+        public String element;
         public ArrayList<Node> subtrees;
                 
-        public Node(Integer element) {
+        public Node(String element) {
             father = null;
             this.element = element;
             subtrees = new ArrayList<>();
         }
         
-        public Node(Integer element, Node father) {
+        public Node(String element, Node father) {
             this.father = father;
             this.element = element;
             subtrees = new ArrayList<>();
@@ -54,14 +54,14 @@ public class GeneralTreeOfInteger {
         count = 0;
     }
 
-    public Integer getRoot() {
+    public String getRoot() {
         if (isEmpty()) {
             throw new EmptyTreeException();
         }
         return root.element;
     }
 
-    public void setRoot(Integer element) {
+    public void setRoot(String element) {
         if (isEmpty()) {
             throw new EmptyTreeException();
         }
@@ -90,7 +90,7 @@ public class GeneralTreeOfInteger {
         count = 0;
     }
 
-    public Integer getFaher(Integer element) {
+    public String getFaher(Integer element) {
         Node n = searchNodeRef(element, root);
         if (n == null || n.father == null) {
             return null;
@@ -122,7 +122,7 @@ public class GeneralTreeOfInteger {
         return res;
     }
 
-    public boolean add(Integer element, Integer father) {
+    public boolean add(String element, Integer father) {
         Node n = new Node(element);
         Node nAux = null;
         boolean res = false;
@@ -145,13 +145,13 @@ public class GeneralTreeOfInteger {
     }
 
 
-    public ArrayList<Integer> positionsPre() {
-        ArrayList<Integer> lista = new ArrayList<>();
+    public ArrayList<String> positionsPre() {
+        ArrayList<String> lista = new ArrayList<>();
         positionsPreAux(root, lista);
         return lista;
     }
 
-    private void positionsPreAux(Node n, ArrayList<Integer> lista) {
+    private void positionsPreAux(Node n, ArrayList<String> lista) {
         if (n != null) {
             lista.add(n.element);
             for (int i = 0; i < n.getSubtreesSize(); i++) {
@@ -160,8 +160,8 @@ public class GeneralTreeOfInteger {
         }
     }
     
-    public ArrayList<Integer> positionsWidth() {
-        ArrayList<Integer> lista = new ArrayList<>();
+    public ArrayList<String> positionsWidth() {
+        ArrayList<String> lista = new ArrayList<>();
 
         Queue<Node> fila = new Queue<>();
         Node atual;
