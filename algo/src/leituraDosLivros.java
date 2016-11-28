@@ -14,53 +14,36 @@ public class leituraDosLivros {
 		String Capitulo = "Oi";
 		boolean para = false;
 		GeneralTreeOfString arvLivro = new GeneralTreeOfString();
-		Path c1 = FileSystems.getDefault().getPath("livros", "livro.txt");
-		BufferedReader leitor;
 		String seção = "09";
-
-		String linha;
 		ArrayList<String> copiaLivro = le1();
-
 		arvLivro.add(copiaLivro.get(0).substring(2, copiaLivro.get(0).length()), null, 5);
-
 		for (int i = 1; i < copiaLivro.size();) {
 			para = false;
 			if (copiaLivro.get(i).substring(0, 1).equals("C")) {
 				Capitulo = copiaLivro.get(i).substring(2, copiaLivro.get(i).length());
 				arvLivro.add(Capitulo, arvLivro.getRoot(), 0);
 				i++;
-
 			}
 			if (copiaLivro.get(i).substring(0, 1).equals("S")) {
 				seção = copiaLivro.get(i).substring(2, copiaLivro.get(i).length());
 				arvLivro.add(seção, Capitulo, 1);
-
-				System.out.println(copiaLivro.get(i));
 				i++;
 			}
 			if (i > copiaLivro.size())
 				break;
-
 			while (!para) {
 				if (i >= copiaLivro.size())
 					break;
-
 				if (copiaLivro.get(i).substring(0, 1).equals("SS")) {
 					arvLivro.add(copiaLivro.get(i).substring(2, copiaLivro.get(i).length()), seção, 2);
 					seção = copiaLivro.get(i);
-					System.out.println(copiaLivro.get(i));
 					i++;
-
 				} else if (copiaLivro.get(i).substring(0, 1).equals("P")) {
 					arvLivro.add(copiaLivro.get(i).substring(2, 3), seção, 3);
-					System.out.println(copiaLivro.get(i));
 					i++;
-
 				} else {
-
 					para = true;
 				}
-
 			}
 		}
 
