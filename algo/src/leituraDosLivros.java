@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,26 +11,84 @@ import java.util.Scanner;
 public class leituraDosLivros {
 
 	public void leTudo() {
-		ArrayList<String> livroArray = new ArrayList<>();
+		String Capitulo = "Oi";
+		boolean para = false;
+		GeneralTreeOfString arvLivro = new GeneralTreeOfString();
+		Path c1 = FileSystems.getDefault().getPath("livros", "livro.txt");
+		BufferedReader leitor;
+		String seção = "09";
 
-		Path c1 = FileSystems.getDefault().getPath("Livros", "livro.txt");
+		String linha;
+		ArrayList<String> copiaLivro = le1();
+
+		arvLivro.add(copiaLivro.get(0).substring(2, copiaLivro.get(0).length()), null, 5);
+
+		for (int i = 1; i < copiaLivro.size();) {
+			para = false;
+			if (copiaLivro.get(i).substring(0, 1).equals("C")) {
+				Capitulo = copiaLivro.get(i).substring(2, copiaLivro.get(i).length());
+				arvLivro.add(Capitulo, arvLivro.getRoot(), 0);
+				i++;
+
+			}
+			if (copiaLivro.get(i).substring(0, 1).equals("S")) {
+				seção = copiaLivro.get(i).substring(2, copiaLivro.get(i).length());
+				arvLivro.add(seção, Capitulo, 1);
+
+				System.out.println(copiaLivro.get(i));
+				i++;
+			}
+			if (i > copiaLivro.size())
+				break;
+
+			while (!para) {
+				if (i >= copiaLivro.size())
+					break;
+
+				if (copiaLivro.get(i).substring(0, 1).equals("SS")) {
+					arvLivro.add(copiaLivro.get(i).substring(2, copiaLivro.get(i).length()), seção, 2);
+					seção = copiaLivro.get(i);
+					System.out.println(copiaLivro.get(i));
+					i++;
+
+				} else if (copiaLivro.get(i).substring(0, 1).equals("P")) {
+					arvLivro.add(copiaLivro.get(i).substring(2, 3), seção, 3);
+					System.out.println(copiaLivro.get(i));
+					i++;
+
+				} else {
+
+					para = true;
+				}
+
+			}
+		}
+
+		System.out.println(arvLivro.positionsPre());
+	}
+
+	public ArrayList<String> le1() {
+
+		ArrayList<String> le1 = new ArrayList<>();
+		Path c1 = FileSystems.getDefault().getPath("livros", "livro.txt");
 		BufferedReader leitor;
 		try {
 			leitor = Files.newBufferedReader(c1, Charset.defaultCharset());
 
-			String linha;
+			String linha = "oi";
+
 			while ((linha = leitor.readLine()) != null) {
-				Scanner sc = new Scanner(linha);
-				if (linha.substring(0, 1).equals("L") || linha.substring(0, 1).equals("C")
-						|| linha.substring(0, 1).equals("S")) {
-					livroArray.add(linha.substring(2, linha.length()));
-				}
+
+				le1.add(linha);
+
 			}
 
-		} catch (IOException e) {
-			System.out.println("Livro não encontrado");
-			e.printStackTrace();
+		} catch (Exception e) {
+
 		}
+
+		return le1;
+
 	}
 
 }
