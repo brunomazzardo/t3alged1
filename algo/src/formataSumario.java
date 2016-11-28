@@ -11,29 +11,48 @@ public class formataSumario {
 		StringBuilder sb = new StringBuilder();
 		boolean restaLinha = false;
 		int nLinha = 0;
+		int atu = 0;
+		int numPagina = 0;
 
 		int aux1 = 0;
 		int aux2 = 0;
 		int aux3 = 0;
+		sb.append("------------------------------------------");
+		for (int r = 1; r <= 15; r++) {
+			sb.append("\n");
 
-		sb.append("--------------------------------------------");
+			if (r == 7) {
+				sb.append(r + "                ");				
+				sb.append(copiaLivro.get(0).substring(2, copiaLivro.get(0).length()));
+				sb.append("\n");
+				copiaLivro.remove(0);
+				r++;
+
+			}
+			
+			sb.append(r + " ");
+		
+
+		}
+		sb.append("------------------------------------------  Capa");
 		sb.append("\n");
-		sb.append(copiaLivro.get(0).substring(2, copiaLivro.get(0).length()));
-		sb.append("\n");
-		copiaLivro.remove(0);
 
 		while (copiaLivro.size() > 0) {
 			for (int i = 1; i <= 15; i++) {
 				String linha = null;
 				if (restaLinha) {
 					for (int l = 0; l < nLinha; l++) {
-						int atu=l+1;
-						linha = " Lorem Ipsum"+atu;
+						if (i > 14)
+							break;
+						atu++;
+						linha = "   Lorem Ipsum " + atu;
 						sb.append(i + " " + linha);
 						sb.append("\n");
 						i++;
 					}
+
 				}
+				atu = 0;
 				if (copiaLivro.size() < 1)
 					break;
 
@@ -65,27 +84,33 @@ public class formataSumario {
 					sb.append("\n");
 
 				} else if (copiaLivro.get(0).substring(0, 1).equals("P")) {
+
 					for (int c = 0; c < Integer.parseInt(copiaLivro.get(0).substring(2, 3)); c++) {
-						int atu=c+1;
-						linha = "Lorem Ipsum " + atu;
+						atu++;
+
+						linha = "   Lorem Ipsum " + atu;
 						sb.append(i + " " + linha);
 						sb.append("\n");
+
 						i++;
 						if (i > 15) {
 							restaLinha = true;
 							nLinha = Integer.parseInt(copiaLivro.get(0).substring(2, 3)) - c;
+							c = Integer.parseInt(copiaLivro.get(0).substring(2, 3));
 
-							c = Integer.parseInt(copiaLivro.get(0).substring(2, 3)) - c;
-
-							i = 16;
 						}
 
 					}
+
 					copiaLivro.remove(copiaLivro.get(0));
+					i--;
 
 				}
 
 			}
+			numPagina++;
+			sb.append("------------------------------------------  Pg. " + numPagina);
+			sb.append("\n");
 
 		}
 		return sb;
