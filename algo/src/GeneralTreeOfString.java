@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 public class GeneralTreeOfString {
@@ -11,9 +10,14 @@ public class GeneralTreeOfString {
 		public int tipo;
 		public ArrayList<Node> subtrees;
 
-		public Node(String element) {
+		public int getTipo() {
+			return tipo;
+		}
+
+		public Node(String element, int tipo2) {
 			father = null;
 			this.element = element;
+			tipo = tipo2;
 			subtrees = new ArrayList<>();
 		}
 
@@ -48,10 +52,26 @@ public class GeneralTreeOfString {
 	// Atributos
 	private Node root;
 	private int nCapitulos = 0;
-	private int NSe��es = 0;
+	private int NSeções = 0;
 	private int Ss = 0;
 	private int para = 0;
 	private int count;
+
+	public int getnCapitulos() {
+		return nCapitulos;
+	}
+
+	public int getNSeções() {
+		return NSeções;
+	}
+
+	public int getPara() {
+		return para;
+	}
+
+	public int getSs() {
+		return Ss;
+	}
 
 	// Metodos
 	public GeneralTreeOfString() {
@@ -128,17 +148,17 @@ public class GeneralTreeOfString {
 	}
 
 	public boolean add(String element, String father, int tipo) {
-		Node n = new Node(element);
+		Node n = new Node(element, tipo);
 		Node nAux = null;
 		boolean res = false;
 		if (tipo == 0) {
 			nCapitulos++;
 		} else if (tipo == 1) {
-			NSe��es++;
+			NSeções++;
 
 		} else if (tipo == 2) {
 			Ss++;
-		} else if(tipo==3) {
+		} else if (tipo == 3) {
 			para++;
 		}
 
@@ -149,7 +169,7 @@ public class GeneralTreeOfString {
 			}
 			root = n; // Atualiza a raiz
 			res = true;
-		} else { // Insere no meio da Ã�rvore
+		} else { // Insere no meio da Ãƒï¿½rvore
 			nAux = searchNodeRef(father, root);
 			if (nAux != null) {
 				nAux.addSubtree(n);
@@ -192,6 +212,7 @@ public class GeneralTreeOfString {
 			}
 		}
 		return lista;
+
 	}
 
 }
