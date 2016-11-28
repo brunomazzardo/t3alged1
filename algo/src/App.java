@@ -6,11 +6,14 @@ public class App {
 
 	public static void main(String[] args) {
 
-		leituraDosLivros teste = new leituraDosLivros();
+		String destino = args[0];
+		leituraDosLivros teste = new leituraDosLivros(destino);
+		formataSumario t1 = new formataSumario();
 		
-		formataSumario t1=new formataSumario();
-		System.out.println(t1.sb(teste.leTudo().positionsPre()).toString());
-
+		t1.gravaNoArquivo(args[1], (teste.leTudo().positionsPre()));
+		System.out.println("Gerando Sumário... ok");
+		System.out.println("Imprimindo livro para o arquivo " + args[1]);
+	
 
 	}
 }

@@ -7,17 +7,13 @@ public class GeneralTreeOfString {
 
 		public Node father;
 		public String element;
-		public int tipo;
+
 		public ArrayList<Node> subtrees;
 
-		public int getTipo() {
-			return tipo;
-		}
-
-		public Node(String element, int tipo2) {
+		public Node(String element) {
 			father = null;
 			this.element = element;
-			tipo = tipo2;
+
 			subtrees = new ArrayList<>();
 		}
 
@@ -51,27 +47,8 @@ public class GeneralTreeOfString {
 
 	// Atributos
 	private Node root;
-	private int nCapitulos = 0;
-	private int NSeções = 0;
-	private int Ss = 0;
-	private int para = 0;
+
 	private int count;
-
-	public int getnCapitulos() {
-		return nCapitulos;
-	}
-
-	public int getNSeções() {
-		return NSeções;
-	}
-
-	public int getPara() {
-		return para;
-	}
-
-	public int getSs() {
-		return Ss;
-	}
 
 	// Metodos
 	public GeneralTreeOfString() {
@@ -147,20 +124,10 @@ public class GeneralTreeOfString {
 		return res;
 	}
 
-	public boolean add(String element, String father, int tipo) {
-		Node n = new Node(element, tipo);
+	public boolean add(String element, String father) {
+		Node n = new Node(element);
 		Node nAux = null;
 		boolean res = false;
-		if (tipo == 0) {
-			nCapitulos++;
-		} else if (tipo == 1) {
-			NSeções++;
-
-		} else if (tipo == 2) {
-			Ss++;
-		} else if (tipo == 3) {
-			para++;
-		}
 
 		if (father == null) { // Insere na raiz
 			if (root != null) { // Atualiza o pai da raiz
