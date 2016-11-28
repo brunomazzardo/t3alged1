@@ -7,13 +7,14 @@ public class GeneralTreeOfString {
 
 		public Node father;
 		public String element;
-
+	
 		public ArrayList<Node> subtrees;
+
 
 		public Node(String element) {
 			father = null;
 			this.element = element;
-
+		
 			subtrees = new ArrayList<>();
 		}
 
@@ -47,8 +48,10 @@ public class GeneralTreeOfString {
 
 	// Atributos
 	private Node root;
-
+	
 	private int count;
+
+
 
 	// Metodos
 	public GeneralTreeOfString() {
@@ -128,6 +131,7 @@ public class GeneralTreeOfString {
 		Node n = new Node(element);
 		Node nAux = null;
 		boolean res = false;
+	
 
 		if (father == null) { // Insere na raiz
 			if (root != null) { // Atualiza o pai da raiz

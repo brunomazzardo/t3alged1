@@ -64,7 +64,7 @@ public class leituraDosLivros {
 		System.out.println("Capitulos..."+nCapitulos);
 		System.out.println("Seções... "+ NSeções);
 		System.out.println("Subseções... "+ Ss);
-		System.out.println("Parágrafos..."+ paragrafos);
+		System.out.println("Paragrafos..."+paragrafos);
 		return arvLivro;
 	}
 
